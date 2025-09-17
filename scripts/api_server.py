@@ -25,8 +25,8 @@ app.add_middleware(
 # Initialize the TB detection model
 tb_model = None
 
-MODEL_PATH = "./scripts/tb_model.h5"
-MODEL_URL = "https://drive.google.com/uc?export=download&id=1ljpK2LvQVn4hX6Z2x7Hd9rOXi9keAgqj"
+MODEL_PATH = "../scripts/tb_model.tflite"
+MODEL_URL = "https://drive.google.com/file/d/1onLjOCLbABtEYDDCWmvrDwy7uI5bnp8t/view?usp=drive_link"
 
 @app.on_event("startup")
 async def startup_event():
