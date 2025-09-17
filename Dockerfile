@@ -8,7 +8,6 @@ WORKDIR /app
 COPY scripts/ ./scripts/
 
 # Copy the trained model file into container root
-COPY scripts/tb_model.h5 ./scripts/tb_model.h5
 
 # Copy requirements.txt into container
 COPY requirements.txt .
