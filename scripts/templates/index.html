@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TB Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+            width: 400px;
+            margin: auto;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        input[type=file] {
+            margin: 20px 0;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        .normal {
+            background: #2ecc71;
+            color: white;
+        }
+        .tb {
+            background: #e74c3c;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tuberculosis Detection</h1>
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <br>
+            <button type="submit">Upload & Predict</button>
+        </form>
+
+        {% if prediction %}
+            <div class="result {% if prediction == 'Normal' %}normal{% else %}tb{% endif %}">
+                Prediction: {{ prediction }} <br>
+                Confidence: {{ "%.2f" | format(confidence * 100) }}%
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

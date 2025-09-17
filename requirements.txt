@@ -1,0 +1,11 @@
+tensorflow==2.20.0
+numpy<2
+opencv-python==4.8.0.74
+Pillow==10.0.0
+matplotlib==3.7.2
+fastapi==0.103.1
+uvicorn==0.23.2
+python-multipart==0.0.6
+flask
+flask-cors
+# remove keras completely, use `from tensorflow import keras` in your code
