@@ -1,5 +1,7 @@
+# Use Python slim image
 FROM python:3.11-slim
 
+# Set working directory
 WORKDIR /app
 
 # Install system dependencies for OpenCV
@@ -14,10 +16,17 @@ COPY scripts/ ./scripts/
 # Copy requirements
 COPY requirements.txt .
 
-# Install Python dependencies
-RUN pip install --upgrade pip setuptools wheel setuptools_scm && \
-    pip install --prefer-binary -r requirements.txt && \
-    pip install tflite-runtime fastapi uvicorn python-multipart requests opencv-python-headless
+# Upgrade pip, setuptools, wheel
+RUN pip install --upgrade pip setuptools wheel
+
+# Install numpy first (must be before tensorflow/matplotlib)
+RUN pip install "numpy<2"
+
+# Then install all other dependencies from requirements.txt
+RUN pip install --prefer-binary -r requirements.txt
+
+# Additional installs for TFLite, FastAPI, OpenCV headless
+RUN pip install tflite-runtime fastapi uvicorn python-multipart requests opencv-python-headless
 
 # Expose port
 EXPOSE 8000
