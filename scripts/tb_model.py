@@ -111,7 +111,7 @@ class TBDetectionModel:
             # 'heatmap': heatmap_base64
         }
     
-    def generate_gradcam(self, img_array, class_idx):
+    # def generate_gradcam(self, img_array, class_idx):
         """Generate Grad-CAM heatmap for model explainability."""
         if self.model is None:
             return np.random.rand(224, 224)  # Mock heatmap
@@ -154,7 +154,7 @@ class TBDetectionModel:
         
         return heatmap.numpy()
     
-    def heatmap_to_base64(self, heatmap, original_image):
+    # def heatmap_to_base64(self, heatmap, original_image):
         """Convert heatmap to base64 string for frontend display."""
         # Resize heatmap to match original image size
         heatmap_resized = cv2.resize(heatmap, original_image.size)
